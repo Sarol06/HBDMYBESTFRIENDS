@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Septa</title>
+    <style>
+      #our-story-begins {
+  position: relative;
+  background-color: #ffffff; /* Pastikan bagian ini terisolasi */
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Bagian White Section */
+.white {
+  position: relative;
+  height: 100vh;
+}
+
+.white:before {
+  z-index: 1000;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60vh;
+  background-image: linear-gradient(
+    -180deg,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.white:after {
+  z-index: 1000;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20vh;
+  background-image: linear-gradient(
+    0deg,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+/* Kotak Animasi */
+.squares {
+  height: 100%;
+  display: flex;
+  width: 1100px;
+  justify-content: space-around;
+  overflow: hidden;
+  z-index: 1;
+  flex-wrap: wrap; /* Untuk memenuhi area */
+}
+
+.square {
+  animation: squares 9.5s linear infinite;
+  align-self: flex-end;
+  width: 1em;
+  height: 1em;
+  transform: translateY(100%);
+  background: #ebebeb;
+}
+
+.square:nth-child(2) {
+  height: 1.5em;
+  width: 3em;
+  animation-delay: 1s;
+  animation-duration: 17s;
+  filter: blur(5px);
+}
+
+.square:nth-child(3) {
+  height: 2em;
+  width: 1em;
+  animation-delay: 1.5s;
+  animation-duration: 8s;
+  filter: blur(0);
+}
+
+.square:nth-child(4) {
+  height: 1em;
+  width: 1.5em;
+  animation-delay: 0.5s;
+  filter: blur(3px);
+  animation-duration: 13s;
+}
+
+.square:nth-child(5) {
+  height: 1.25em;
+  width: 2em;
+  animation-delay: 4s;
+  filter: blur(2px);
+  animation-duration: 11s;
+}
+
+.square:nth-child(6) {
+  height: 2.5em;
+  width: 2em;
+  animation-delay: 2s;
+  filter: blur(1px);
+  animation-duration: 9s;
+}
+
+.square:nth-child(7) {
+  height: 5em;
+  width: 2em;
+  filter: blur(2.5px);
+  animation-duration: 12s;
+}
+
+.square:nth-child(8) {
+  height: 1em;
+  width: 3em;
+  animation-delay: 5s;
+  filter: blur(6px);
+  animation-duration: 18s;
+}
+
+.square:nth-child(9) {
+  height: 1.5em;
+  width: 2em;
+  filter: blur(0.5px);
+  animation-duration: 9s;
+}
+
+.square:nth-child(10) {
+  height: 3em;
+  width: 2.4em;
+  animation-delay: 6s;
+  filter: blur(0.5px);
+  animation-duration: 12s;
+}
+
+@keyframes squares {
+  from {
+    transform: translateY(100%) rotate(-50deg);
+  }
+  to {
+    transform: translateY(calc(-100vh + -100%)) rotate(20deg);
+  }
+}
+
+/* Styling untuk teks cerita */
+.story-text {
+  z-index: 2;
+}
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            color: #333;
+            overflow-x: hidden;
+        }
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+        .hidden {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        header {
+            background: linear-gradient(135deg, #ff6a6a, #ffd1dc);
+            color: #fff;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 4rem;
+            animation: fadeIn 2s ease-out;
+        }
+        header p {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            animation: slideIn 2s ease-out 0.5s;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            animation: fadeIn 2s ease;
+        }
+        .gallery img {
+            width: calc(33.333% - 1rem);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+        }
+        .circle-gallery {
+  --g: 8px;   /* the gap */
+  --s: 400px; /* the size */
+  
+  display: grid;
+  border-radius: 50%;
+}
+.circle-gallery > img {
+  grid-area: 1/1;
+  width: 400px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+  transform: translate(var(--_x,0),var(--_y,0));
+  cursor: pointer;
+  z-index: 0;
+  transition: .3s, z-index 0s .3s;
+}
+.circle-gallery img:hover {
+  --_i: 1;
+  z-index: 1;
+  transition: transform .2s, clip-path .3s .2s, z-index 0s;
+}
+.circle-gallery:hover img {
+  transform: translate(0,0);
+}
+.circle-gallery > img:nth-child(1) {
+  clip-path: polygon(50% 50%,calc(50%*var(--_i,0)) calc(120%*var(--_i,0)),0 calc(100%*var(--_i,0)),0 0,100% 0,100% calc(100%*var(--_i,0)),calc(100% - 50%*var(--_i,0)) calc(120%*var(--_i,0)));
+  --_y: calc(-1*var(--g))
+}
+.circle-gallery > img:nth-child(2) {
+  clip-path: polygon(50% 50%,calc(100% - 120%*var(--_i,0)) calc(50%*var(--_i,0)),calc(100% - 100%*var(--_i,0)) 0,100% 0,100% 100%,calc(100% - 100%*var(--_i,0)) 100%,calc(100% - 120%*var(--_i,0)) calc(100% - 50%*var(--_i,0)));
+  --_x: var(--g)
+}
+.circle-gallery > img:nth-child(3) {
+  clip-path: polygon(50% 50%,calc(100% - 50%*var(--_i,0)) calc(100% - 120%*var(--_i,0)),100% calc(100% - 120%*var(--_i,0)),100% 100%,0 100%,0 calc(100% - 100%*var(--_i,0)),calc(50%*var(--_i,0)) calc(100% - 120%*var(--_i,0)));
+  --_y: var(--g)
+}
+.circle-gallery > img:nth-child(4) {
+  clip-path: polygon(50% 50%,calc(120%*var(--_i,0)) calc(50%*var(--_i,0)),calc(100%*var(--_i,0)) 0,0 0,0 100%,calc(100%*var(--_i,0)) 100%,calc(120%*var(--_i,0)) calc(100% - 50%*var(--_i,0)));
+  --_x: calc(-1*var(--g))
+}
+.text-gallery-wrapper {
+  display: flex;
+  align-items: center; /* Agar konten vertikal rata tengah */
+  justify-content: space-between; /* Beri jarak antara teks dan galeri */
+  gap: 20px; /* Jarak horizontal antara teks dan galeri */
+}
+
+.text {
+  flex: 1; /* Teks menempati ruang sesuai kebutuhan */
+  padding: 10px; /* Opsional, untuk memberi ruang tambahan di sekitar teks */
+  color: #000000; /* Ganti warna teks sesuai kebutuhan */
+}
+
+.circle-gallery {
+  flex: 0 0 auto; /* Ukuran galeri tetap */
+  display: grid; /* Tetap gunakan pengaturan galeri */
+  --g: 8px;
+  --s: 400px;
+}
+/* Pengaturan Umum */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Thumbnail Galeri */
+.thumbs-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 500px;
+  max-width: 100%;
+}
+
+.thumb-item {
+  max-width: 150px;
+  height: 150px;
+  margin: 10px;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 0 0 0 3px white, 0 5px 8px 3px rgba(0, 0, 0, 0.6);
+}
+
+.thumb-item img {
+  min-width: 100%;
+  min-height: 100%;
+  transition: transform 0.1s ease-in-out, filter 0.1s ease-in-out;
+  transform: scale(1);
+  filter: grayscale(50%);
+}
+
+.thumb-item:hover img {
+  transform: scale(1.1);
+  filter: grayscale(0%);
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px); /* Menambahkan efek blur */
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+
+
+.lightbox:target {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-content img {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  object-fit: contain;
+}
+/* Menyamakan ukuran gambar pada Lightbox2 dan Lightbox3 */
+#lightbox2 img, #lightbox3 img {
+    max-width: 90%; /* Maksimal 90% dari lebar viewport */
+    max-height: 80vh; /* Maksimal 80% dari tinggi viewport */
+    width: auto; /* Menjaga aspek rasio */
+    height: auto; /* Menjaga aspek rasio */
+    margin: auto;
+    display: block; /* Memastikan gambar terpusat */
+}
+/* Menentukan ukuran tetap untuk gambar di Lightbox1, Lightbox2, dan Lightbox3 */
+#lightbox1 img,
+#lightbox2 img,
+#lightbox3 img {
+    width: 638px; /* Lebar tetap */
+    height: 359px; /* Tinggi tetap */
+    object-fit: cover; /* Menjaga proporsi dengan memotong gambar jika perlu */
+    display: block; /* Memastikan gambar tampil sebagai blok */
+    margin: auto; /* Memusatkan gambar */
+}
+
+
+/* Tombol Navigasi Lightbox */
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.lightbox-nav.left {
+  left: 5%;
+}
+
+.lightbox-nav.right {
+  right: 5%;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 2rem;
+  color: white;
+  text-decoration: none;
+}
+/* Bagian Video */
+.video-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.video-player {
+  max-width: 90%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+
+
+        .message {
+            max-width: 600px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 2rem auto;
+            animation: fadeIn 2s ease;
+        }
+        footer {
+            background: linear-gradient(135deg, #ff6a6a, #ffd1dc);
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+        .falling-manik {
+            position: absolute;
+            top: -10%;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            border-radius: 50%;
+            animation: fall 4s linear infinite;
+            opacity: 0.7;
+        }
+        .falling-manik.colorful {
+            background: linear-gradient(135deg, #ff6a6a, #ffd1dc, #fad0c4, #ff9a9e, #ff6a88);
+        }
+        @keyframes fall {
+            0% {
+                transform: translateX(0) translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-200px) translateY(110vh);
+                opacity: 0;
+            }
+        }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        .container {
+            display: flex;
+            width: 100%;
+            padding: 4% 2%;
+            box-sizing: border-box;
+            height: 100vh;
+        }
+
+        .box {
+            flex: 1;
+            overflow: hidden;
+            transition: .5s;
+            margin: 0 2%;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, .1);
+            line-height: 0;
+        }
+
+        .box > img {
+            width: 200%;
+            height: calc(100% - 10vh);
+            object-fit: cover;
+            transition: .5s;
+        }
+
+        .box > span {
+            font-size: 3.8vh;
+            display: block;
+            text-align: center;
+            height: 10vh;
+            line-height: 2.6;
+        }
+
+        .box:hover {
+            flex: 1 1 50%;
+        }
+
+        .box:hover > img {
+            width: 100%;
+            height: 100%;
+        }
+        /* Hover Section Styling */
+.hover-container .container {
+  max-width: 720px;
+  margin: 90px auto;
+  position: relative;
+}
+
+.hover-container h2 {
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 110px;
+  letter-spacing: -0.05em;
+  text-align: center;
+  line-height: 1;
+  color: #ffffff; /* $blue-dark */
+  font-family: 'Roboto Condensed', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  transform-origin: center bottom;
+  transition: all 0.4s;
+}
+
+.hover-container h2:first-of-type {
+  transform-origin: center top;
+}
+
+.hover-container .container:hover h2 {
+  transform: scaleY(0);
+}
+
+.hover-container .text {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  font-family: 'Open Sans';
+  transform: translateY(-50%);
+  transition: all 0.3s;
+}
+
+.hover-container .text:before,
+.hover-container .text:after {
+  display: block;
+  margin: 50px 0;
+  height: 10px;
+  background: linear-gradient(to right, #00fcff, #00ff72); /* $blue-lightest, $green-light */
+  opacity: 0.75;
+  content: '';
+  transition: all 0.3s;
+}
+
+.hover-container .text:hover {
+  background: white;
+}
+
+.hover-container .text:hover:before,
+.hover-container .text:hover:after {
+  margin: 0;
+}
+
+.hover-container .inner {
+  padding: 0 60px;
+  max-height: 0;
+  overflow: hidden;
+  background: white;
+  line-height: 1.5;
+  font-size: 18px;
+  font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  transform: scale(0);
+  transition: all 0.3s;
+}
+
+.hover-container .container:hover .inner {
+  padding: 60px;
+  max-height: 700px;
+  transform: scale(1);
+}
+
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const sections = document.querySelectorAll("section");
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove("hidden");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            sections.forEach(section => {
+                section.classList.add("hidden");
+                observer.observe(section);
+            });
+
+            const fallingManik = () => {
+                for (let i = 0; i < 30; i++) {
+                    const manik = document.createElement('div');
+                    manik.className = 'falling-manik colorful';
+                    manik.style.left = `${Math.random() * 100}vw`;
+                    manik.style.animationDelay = `${Math.random() * 2}s`;
+                    manik.style.animationDuration = `${3 + Math.random() * 2}s`;
+                    document.body.appendChild(manik);
+                    setTimeout(() => manik.remove(), 5000);
+                }
+            };
+            const thankYouSection = document.querySelector("footer");
+            thankYouSection.addEventListener('mouseenter', fallingManik);
+        });
+    let isPlaying = false; // Track music state
+          // Get references to the video and audio elements
+  const videoPlayer = document.getElementById("video-player");
+  const backgroundMusic = document.getElementById("background-music");
+
+  // Pause music when video starts playing
+  videoPlayer.addEventListener("play", () => {
+    backgroundMusic.pause();
+  });
+
+  // Resume music when video is paused
+  videoPlayer.addEventListener("pause", () => {
+    backgroundMusic.play();
+  });
+
+  // Resume music when video ends
+  videoPlayer.addEventListener("ended", () => {
+    backgroundMusic.play();
+  });
+    </script>
+</head>
+<body>
+<section id="our-story-begins" style="position: relative; z-index: 1;">
+  <div class="white">
+    <div class="squares">
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+    </div>
+  </div>
+  <div class="grey"></div>
+  <!-- Teks "Our Story Begins" -->
+  <div class="story-text" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 2;">
+    <h1 style="font-size: 3rem; font-family: 'Arial', sans-serif; color: #333;">Our Story Begins</h1>
+    <p style="font-size: 1.5rem; color: #666;">Septa, here's a glimpse of our journey together, filled with memories and laughter.</p>
+  </div>
+  <audio controls>
+    <source src="https://www.dropbox.com/scl/fi/g12shgep0idlkl6khmn4m/Gibran-Alcocer-Idea-15-ezmp3.cc.mp3?rlkey=rtyzojq8fqel1t2r248dvy6re&st=l28sg4jj&raw=1" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+</section>
+
+    <section class="hover-container">
+      <div class="container">
+        <h2>Grateful for You</h2>
+        <div class="text">
+          <div class="inner">
+            There’s so much I want to say to you, yet words often feel too small to hold the depth of what I feel. Thank you for being you—for your patience, your kindness, and the little things you do that make life brighter. Thank you for staying by my side, even when I faltered, and for accepting me with all my flaws. You’ve shown me what it means to truly connect, to trust, and to feel seen.
+            <p>I’m truly happy and endlessly grateful that fate—or perhaps something greater—brought us together. In you, I’ve found more than just a companion; I’ve found someone who inspires me to be better, someone who makes life’s mundane moments feel magical, someone who feels like a piece of my soul.</p>
+            I’m sorry if my emotions sometimes come across as overwhelming or even selfish. It’s just that what I feel for you runs so deep, and I sometimes struggle to contain it. But please know this—I’m grateful for every moment we’ve shared. Every laugh, every memory, every silent understanding between us—they’re etched into my heart forever.
+            With you, life feels fuller, brighter, and more meaningful. With you, I feel like I’ve found something rare and precious, something I’ll cherish for as long as I live.
+            <p>So here’s my promise to you: no matter where life takes me, no matter the storms I may weather, you’ll always have a place in my heart. You’ll always be my home.</p>
+            Forever thankful, always yours.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="background-color: #eaf8fc;">
+    <div class="text-gallery-wrapper">
+        <div class="text">
+          <h2>All of You Matter to Me</h2>
+          <p>"Thank you for giving me a reason to smile every day. Your presence reminds me that I’m not invisible, that I matter, and that I’m loved.
+
+            You’ve made me feel seen and valued in ways I never thought possible. For that, I’ll always be grateful."</p>
+        </div>
+        <div class="circle-gallery">
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgUuZNKHGn5ucZhMl4OG2mlQOq2CPwR57FHVxM6KSFRAxK8zkubkREofGLIIKgGVkP2Bvjt02FGZvXXgBRyqGrb1aPe7-lwV5UQCWu72_aHiOnNtfNbPYSc58PuJOTIRkYPgswbfxk7rceTwi3JVH0-SSrZiBiynOt3Ci3gkzzZ6kX600FVOa8Y9deFv_8r/w400-h400/11zon_cropped%20(2).png" alt="a hot air balloon">
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjf766V4CMlqxq6E_hDDEf7rnvo7fuODP1RO5kdysvay_hFc5vSMT1fbZPSXaCjjYZ1ww6oPjJhTHGBmI4apLX0XhVYZPSf2drJxbE0b9pr83i8van1BXm63pvyAur2_6jlUfig3KGGUv-85bHQjBaKClOHNVIoKW7xxVj8PeWBouf7-fsEjFfm67r0Fyhi/w400-h400/11zon_cropped%20(1).png" alt="a sky photo of an old city">
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg0DxoUuVNYkF9Oaj6YS6vDwRjZvlrgvdOsHnRLyg6aKPlFoUox6gWy24jA32i_rBai1ubL4yydn_lvfgsfU7EiiwDdmNz2RVzsLMyDZnOETL1pHtxYXlwj4i40rmlwISPLwsKZkDkNfDt9kD_MxHNlaPJek-rGa9f3uDJNqcqBhN043DiOIT01KJ9wqto1/w400-h400/11zon_cropped%20(3).png" alt="a small boat">
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhZ-oMnCsHkWopZXM_6KxyGr9OrbgbUtqn7eY9gJejBckYiXIE8F5Qf2CeKQ5igzjgVtgStDmjMqPs5msUy2cpr4oNNWKtAXQFBAgBSRQJ16Ko-yuzyfAZfWtZZC1wkZgEJnpSZ3kOYbTZ773WMZqZ3RPlriDXE56glDxpO6hkSYyQNbacaFrFw1DCD_awF/w400-h400/11zon_cropped%20(4).png" alt="a forest">
+        </div>
+      </div>
+      
+</section>  
+<section><div class="background">
+  <h2>The Best Picture I Ever Had</h2>
+    <div class="thumbs-container">
+      <a href="#lightbox1" class="thumb-item">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpYFJ8hriZspGi2xC_L1AxkCmSgHHVsVRteAFOr_A862aBuzWqI1J7JSncj4JaKYE_usv-HLuUfTALMQ1h_nJz9EFuyAkOSDAeWf-ItywiW3a2fzPICDF58TO0Ig_IBOdMRGrWTOugsAadNwmSLAGOAlchyq7bU-NUqhp6LF_JmZXI9tAgodCRawV8Jupv/w400-h225/IMG_20231219_195243aa.jpg" alt="Gambar 1">
+      </a>
+      <a href="#lightbox2" class="thumb-item">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWlZHfZbNbuDQFckOGrwPle5comZWEvq4jLNh7bxNbUOirYZw6zOWt5TWxmRZb13rBvFc0hmPFjjKhMEce7yvXCEGZoAYT29TrQw7sw69fmJxbn3YPedAL-vBvo2KVe3Y1nV9gzvBpisZrrcPxqnahWbzpnE2_q5O_r2GiO923Qg0Z3Ntwu5w4JM8PgwGD/s4000/IMG_20231221_164829.jpg" alt="Gambar 2">
+      </a>
+      <a href="#lightbox3" class="thumb-item">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhiv5llcFrinU_Jpnzp5Nd5EP0r6UcqpsTV-BlYDzylPUJHO0RX8Hnwe2o9vB3R0QDKjbkBM7prDaDxBfVIR1o8Bnj86f1tkgCo17LETSn-3zhS4MKQEhEXJ0Pi3Xt508sTNdnnl_O3d1gZ70g2BNZ0j5geJxVaaq-ZxXHdxvDshT_FIFHnrr5_fMQ_gIWU/s4000/IMG_20231219_195243.jpg" alt="Gambar 3">
+      </a>
+    </div>
+  </div>
+  
+  <div id="lightbox1" class="lightbox">
+    <a href="#!" class="lightbox-close">&times;</a>
+    <a href="#lightbox3" class="lightbox-nav left">&lt;</a>
+    <div class="lightbox-content">
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpYFJ8hriZspGi2xC_L1AxkCmSgHHVsVRteAFOr_A862aBuzWqI1J7JSncj4JaKYE_usv-HLuUfTALMQ1h_nJz9EFuyAkOSDAeWf-ItywiW3a2fzPICDF58TO0Ig_IBOdMRGrWTOugsAadNwmSLAGOAlchyq7bU-NUqhp6LF_JmZXI9tAgodCRawV8Jupv/w400-h225/IMG_20231219_195243aa.jpg" alt="Gambar 1">
+    </div>
+    <a href="#lightbox2" class="lightbox-nav right">&gt;</a>
+  </div>
+  
+  <div id="lightbox2" class="lightbox">
+    <a href="#!" class="lightbox-close">&times;</a>
+    <a href="#lightbox1" class="lightbox-nav left">&lt;</a>
+    <div class="lightbox-content">
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWlZHfZbNbuDQFckOGrwPle5comZWEvq4jLNh7bxNbUOirYZw6zOWt5TWxmRZb13rBvFc0hmPFjjKhMEce7yvXCEGZoAYT29TrQw7sw69fmJxbn3YPedAL-vBvo2KVe3Y1nV9gzvBpisZrrcPxqnahWbzpnE2_q5O_r2GiO923Qg0Z3Ntwu5w4JM8PgwGD/s4000/IMG_20231221_164829.jpg" alt="Gambar 2">
+    </div>
+    <a href="#lightbox3" class="lightbox-nav right">&gt;</a>
+  </div>
+  
+  <div id="lightbox3" class="lightbox">
+    <a href="#!" class="lightbox-close">&times;</a>
+    <a href="#lightbox2" class="lightbox-nav left">&lt;</a>
+    <div class="lightbox-content">
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhiv5llcFrinU_Jpnzp5Nd5EP0r6UcqpsTV-BlYDzylPUJHO0RX8Hnwe2o9vB3R0QDKjbkBM7prDaDxBfVIR1o8Bnj86f1tkgCo17LETSn-3zhS4MKQEhEXJ0Pi3Xt508sTNdnnl_O3d1gZ70g2BNZ0j5geJxVaaq-ZxXHdxvDshT_FIFHnrr5_fMQ_gIWU/s4000/IMG_20231219_195243.jpg" alt="Gambar 3">
+    </div>
+    <a href="#lightbox1" class="lightbox-nav right">&gt;</a>
+  </div>
+  </section>
+
+  <section style="background-color: #fef6f9;">
+    <h2>Here Some "Core" of You</h2>
+    <div class="video-section">
+      <video controls width="640" height="360">
+        <source src="https://www.dropbox.com/scl/fi/wlrkty1hsafgmbapakksv/Lv-0-20240316155724.mp4?rlkey=gem8f7i7yd4p17ubnwrn79md9&st=riouj9j8&raw=1" type="video/mp4">
+        Your browser does not support the video tag. <a href="https://www.dropbox.com/scl/fi/wlrkty1hsafgmbapakksv/Lv-0-20240316155724.mp4?raw=1">Download the video here.</a>
+      </video>
+    </div>
+  </section>  
+  
+                <section style="background-color: #faebd7;">
+                    <h2>Special Messages</h2>
+                    <div class="message">
+                        <p><strong>From Friend A:</strong> Septa, you brighten every room you walk into. Happy Birthday!</p>
+                    </div>
+                    <div class="message">
+                        <p><strong>From Friend B:</strong> May this year bring you endless joy and success!</p>
+                    </div>
+                    <div class="message">
+                        <p><strong>From Friend C:</strong> Keep smiling and shining like you always do, Septa!</p>
+                    </div>
+                </section>
+
+                <section style="background-color: #fff0f5;">
+        <h2>Best Moment Photos</h2>
+        <p>Verified by Google Photos</p>
+        <div class="container">
+            <div class="box">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgF0dnOSZxYV8A0xDI4q6hHYcxWvm1rTsET59if2v9X3iNl6VU18QtEEvzsSUChdRBDgr2pOwfgnHjTe-kkGD6BTEpXIpMNtxbZQYWK9jcEEPLMo-XTQwOseAXgr2gAGoYHR_2f7fYU02tOztEsSvhBPGw0_iwcDyStO6G-dL39HyVbTnWDNglNc-F9dKTq/s2844/IMG-20231027-WA0042%20(1).jpg" alt="Memory 1">
+                <span>Memory 1</span>
+            </div>
+            <div class="box">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjdzk8aA8huuMHH6kvj9Cj9QX2EDoRJ9K11zFsfUC4EHMADqNXSq-eH6cXwCpqFAwtJiqKBO-_NVveECpRuNHcjBLrt5DCbGieBk7K2_W0wL4WXbVhQ5UevK2c9g0C6wBocz4Bpl4ir_jjGavZ3ZvAFXpTGfaWIiY0X8jGawCnQNs8gBfslxAIq-YnjbTgT/s4000/IMG_20240712_094600.jpg" alt="Memory 2">
+                <span>Memory 2</span>
+            </div>
+            <div class="box">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg6D2lMf0vld39qNRwk0YM8K8Z3TzLpJjHMVGs7wzjOxA22jEnMuTP-ItCzgvyyB3VQqw5YtSDX9EGkobK80A91yNfK06MV9YS_4j1HHj0OAWEvgmACd3fWhDzQVoheRsJnMpOlluTc4nF92rXcUVda1cr9xOMKAn3eJqHkown6xagBKOVtZo5NBeQXgLgC/s2844/sdadsa.jpg" alt="Memory 3">
+                <span>Memory 3</span>
+                </section>
+            
+                <section style="background-color: #f8e8f9;">
+                    <h2>Memorable Quotes</h2>
+                    <p>"Life is not measured by the number of breaths we take, but by the moments that take our breath away."</p>
+                    <p>"Happiness is not something ready-made. It comes from your own actions."</p>
+                </section>
+            
+                <section style="background-color: #f7f3f9;">
+                    <h2>Thank You for Being You</h2>
+                    <p>Septa, your kindness and presence make the world a better place. Today, we celebrate you!</p>
+                </section>
+            
+                <footer>
+                    <p>Made with love for Septa's special day</p>
+                </footer>
+            </body>
+            </html>
+            
