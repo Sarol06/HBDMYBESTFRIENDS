@@ -74,7 +74,7 @@
         <div id="playlist">
             <div class="song">
                 <span>Just Give Me Your Goodbye</span>
-                <button onclick="playSong('https://docs.google.com/uc?export=download&id=1gW8w8GXW4eKC0VwMN0B60uNvTV9A3rqe')">Putar</button>
+                <button onclick="playSong('https://www.dropbox.com/scl/fi/d3ys28uqfuz60cp0azsq7/Give-Me-Your-Goodbye-Official-Lyric-Video-by-Alffy-Rev-and-The-True-Friends-ezmp3.cc.mp3?rlkey=hok8d4qrg9kxcdhyqvg2zywq4&raw=1')">Putar</button>
             </div>
         </div>
         <audio id="audioPlayer" controls onerror="alert('Gagal memuat audio. Periksa URL atau format file!')"></audio>
@@ -100,28 +100,20 @@
         }
 
         function playSong(songSrc) {
-    initAudioContext();
+    let audioPlayer = document.getElementById('audioPlayer');
+    
+    // Set ulang volume jika mute
+    audioPlayer.volume = 1.0;  
 
-    // Periksa apakah lagu yang sama sedang diputar
-    if (audioPlayer.src !== songSrc) {
-        audioPlayer.src = songSrc;
-    }
-
+    audioPlayer.src = songSrc;
     audioPlayer.play()
         .then(() => {
-            audioCtx.resume().catch(err => console.error("Gagal resume audio context:", err));
-
-            if (!source) {
-                source = audioCtx.createMediaElementSource(audioPlayer);
-                source.connect(analyser);
-                analyser.connect(audioCtx.destination);
-            }
-            drawVisualizer();
+            console.log("Lagu diputar:", songSrc);
         })
         .catch(err => console.error("Gagal memutar lagu:", err));
 }
 
-        }
+
 
         function drawVisualizer() {
             const bufferLength = analyser.frequencyBinCount;
