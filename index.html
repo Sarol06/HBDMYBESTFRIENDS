@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -83,37 +83,56 @@
         </div>
     </div>
     <script>
+        let audioCtx;
+        let analyser;
+        let source;
         const audioPlayer = document.getElementById('audioPlayer');
         const canvas = document.getElementById('visualizerCanvas');
         const canvasCtx = canvas.getContext('2d');
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        const analyser = audioCtx.createAnalyser();
-        const source = audioCtx.createMediaElementSource(audioPlayer);
-        source.connect(analyser);
-        analyser.connect(audioCtx.destination);
 
-        analyser.fftSize = 256;
-        const bufferLength = analyser.frequencyBinCount;
-        const dataArray = new Uint8Array(bufferLength);
-
-        function draw() {
-            canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
-            analyser.getByteFrequencyData(dataArray);
-            const barWidth = canvas.width / bufferLength;
-            let x = 0;
-            for (let i = 0; i < bufferLength; i++) {
-                const barHeight = dataArray[i] / 2;
-                canvasCtx.fillStyle = 'rgb(' + (barHeight + 100) + ',50,50)';
-                canvasCtx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
-                x += barWidth + 1;
+        function initAudioContext() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                analyser = audioCtx.createAnalyser();
+                analyser.fftSize = 256;
             }
-            requestAnimationFrame(draw);
         }
 
         function playSong(songSrc) {
+            initAudioContext();
+            
             audioPlayer.src = songSrc;
-            audioPlayer.play();
-            audioCtx.resume(); // Resume audio context for autoplay
+            audioPlayer.play()
+                .then(() => {
+                    audioCtx.resume();
+                    if (!source) {
+                        source = audioCtx.createMediaElementSource(audioPlayer);
+                        source.connect(analyser);
+                        analyser.connect(audioCtx.destination);
+                    }
+                    drawVisualizer();
+                })
+                .catch(err => console.error("Gagal memutar lagu:", err));
+        }
+
+        function drawVisualizer() {
+            const bufferLength = analyser.frequencyBinCount;
+            const dataArray = new Uint8Array(bufferLength);
+
+            function draw() {
+                canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
+                analyser.getByteFrequencyData(dataArray);
+
+                const barWidth = canvas.width / bufferLength;
+                let x = 0;
+                for (let i = 0; i < bufferLength; i++) {
+                    const barHeight = dataArray[i] / 2;
+                    canvasCtx.fillStyle = 'rgb(' + (barHeight + 100) + ',50,50)';
+                    canvasCtx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+                    x += barWidth + 1;
+                }
+                requestAnimationFrame(draw);
+            }
             draw();
         }
     </script>
