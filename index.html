@@ -3,38 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Song</title>
+    <title>Daftar Lagu</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
         }
         .song {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 20px;
             margin: 10px auto;
             padding: 10px;
-            width: 80%;
+            width: 60%;
+            max-width: 400px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            background-color: #f9f9f9;
+            background-color: #ffffff;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
         }
         button {
             padding: 5px 10px;
             cursor: pointer;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #audioPlayer {
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <h2>Song</h2>
-    <div id="playlist">
-        <div class="song">
-            <span>Just Give Me Your Goodbye</span>
-            <button onclick="playSong('https://www.dropbox.com/s/d3ys28uqfuz60cp0azsq7/Give-Me-Your-Goodbye.mp3?dl=1')">Putar</button>
+    <div class="container">
+        <h2>Daftar Lagu</h2>
+        <div id="playlist">
+            <div class="song">
+                <span>Just Give Me Your Goodbye</span>
+                <button onclick="playSong('https://www.dropbox.com/s/d3ys28uqfuz60cp0azsq7/Give-Me-Your-Goodbye.mp3?dl=1')">Putar</button>
+            </div>
         </div>
+        <audio id="audioPlayer" controls></audio>
     </div>
-    <audio id="audioPlayer" controls style="margin-top: 20px; display: block;"></audio>
     <script>
         function playSong(songSrc) {
             var player = document.getElementById('audioPlayer');
