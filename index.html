@@ -78,6 +78,8 @@
             </div>
         </div>
         <audio id="audioPlayer" controls></audio>
+        <audio id="audioPlayer" controls onerror="alert('Gagal memuat audio. Periksa URL atau format file!')"></audio>
+
         <div id="visualizer">
             <canvas id="visualizerCanvas"></canvas>
         </div>
@@ -99,20 +101,27 @@
         }
 
         function playSong(songSrc) {
-            initAudioContext();
-            
-            audioPlayer.src = songSrc;
-            audioPlayer.play()
-                .then(() => {
-                    audioCtx.resume();
-                    if (!source) {
-                        source = audioCtx.createMediaElementSource(audioPlayer);
-                        source.connect(analyser);
-                        analyser.connect(audioCtx.destination);
-                    }
-                    drawVisualizer();
-                })
-                .catch(err => console.error("Gagal memutar lagu:", err));
+    initAudioContext();
+
+    // Periksa apakah lagu yang sama sedang diputar
+    if (audioPlayer.src !== songSrc) {
+        audioPlayer.src = songSrc;
+    }
+
+    audioPlayer.play()
+        .then(() => {
+            audioCtx.resume().catch(err => console.error("Gagal resume audio context:", err));
+
+            if (!source) {
+                source = audioCtx.createMediaElementSource(audioPlayer);
+                source.connect(analyser);
+                analyser.connect(audioCtx.destination);
+            }
+            drawVisualizer();
+        })
+        .catch(err => console.error("Gagal memutar lagu:", err));
+}
+
         }
 
         function drawVisualizer() {
