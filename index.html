@@ -1,10 +1,58 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Song</title>
     <style>
+        @keyframes move {
+            100% {
+                transform: translate3d(0, 0, 1px) rotate(360deg);
+            }
+        }
+
+        .background {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            background: #3E1E68;
+            overflow: hidden;
+        }
+
+        .background span {
+            width: 3vmin;
+            height: 3vmin;
+            border-radius: 3vmin;
+            backface-visibility: hidden;
+            position: absolute;
+            animation: move;
+            animation-duration: 43s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        /* Generate spans with different styles */
+        .background span:nth-child(0) {
+            color: #FFACAC;
+            top: 67%;
+            left: 31%;
+            animation-duration: 48s;
+            animation-delay: -32s;
+            transform-origin: -18vw -1vh;
+            box-shadow: 6vmin 0 1.483vmin currentColor;
+        }
+        .background span:nth-child(1) {
+            color: #583C87;
+            top: 88%;
+            left: 100%;
+            animation-duration: 30s;
+            animation-delay: -16s;
+            transform-origin: -18vw -17vh;
+            box-shadow: 6vmin 0 1.095vmin currentColor;
+        }
+        
         body {
             font-family: Arial, sans-serif;
             text-align: center;
@@ -14,16 +62,21 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
-            background-color: #f0f0f0;
+            background-color: transparent;
+            position: relative;
         }
         .container {
+            color: #ffffff;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             width: 100%;
+            position: relative;
+            z-index: 1;
         }
         .song {
+            color: #ffffff;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -32,10 +85,6 @@
             padding: 10px;
             width: 60%;
             max-width: 400px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #ffffff;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
         }
         button {
             padding: 5px 10px;
@@ -49,26 +98,20 @@
             background-color: #0056b3;
         }
         #audioPlayer {
+            color: #ffffff00;
             margin-top: 20px;
             display: block;
-        }
-        #visualizer {
-            margin-top: 10px;
-            width: 80%;
-            max-width: 600px;
-            height: 100px;
-            background-color: #e0e0e0;
-            border-radius: 5px;
-            overflow: hidden;
-            position: relative;
-        }
-        canvas {
-            width: 100%;
-            height: 100%;
         }
     </style>
 </head>
 <body>
+    <div class="background">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+    </div>
     <div class="container">
         <h2>Song</h2>
         <div id="playlist">
@@ -78,62 +121,16 @@
             </div>
         </div>
         <audio id="audioPlayer" controls onerror="alert('Gagal memuat audio. Periksa URL atau format file!')"></audio>
-
-        <div id="visualizer">
-            <canvas id="visualizerCanvas"></canvas>
-        </div>
-    </div>
     <script>
-        let audioCtx;
-        let analyser;
-        let source;
-        const audioPlayer = document.getElementById('audioPlayer');
-        const canvas = document.getElementById('visualizerCanvas');
-        const canvasCtx = canvas.getContext('2d');
-
-        function initAudioContext() {
-            if (!audioCtx) {
-                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                analyser = audioCtx.createAnalyser();
-                analyser.fftSize = 256;
-            }
-        }
-
         function playSong(songSrc) {
-    let audioPlayer = document.getElementById('audioPlayer');
-    
-    // Set ulang volume jika mute
-    audioPlayer.volume = 1.0;  
-
-    audioPlayer.src = songSrc;
-    audioPlayer.play()
-        .then(() => {
-            console.log("Lagu diputar:", songSrc);
-        })
-        .catch(err => console.error("Gagal memutar lagu:", err));
-}
-
-
-
-        function drawVisualizer() {
-            const bufferLength = analyser.frequencyBinCount;
-            const dataArray = new Uint8Array(bufferLength);
-
-            function draw() {
-                canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
-                analyser.getByteFrequencyData(dataArray);
-
-                const barWidth = canvas.width / bufferLength;
-                let x = 0;
-                for (let i = 0; i < bufferLength; i++) {
-                    const barHeight = dataArray[i] / 2;
-                    canvasCtx.fillStyle = 'rgb(' + (barHeight + 100) + ',50,50)';
-                    canvasCtx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
-                    x += barWidth + 1;
-                }
-                requestAnimationFrame(draw);
-            }
-            draw();
+            let audioPlayer = document.getElementById('audioPlayer');
+            audioPlayer.volume = 1.0;
+            audioPlayer.src = songSrc;
+            audioPlayer.play()
+                .then(() => {
+                    console.log("Lagu diputar:", songSrc);
+                })
+                .catch(err => console.error("Gagal memutar lagu:", err));
         }
     </script>
 </body>
