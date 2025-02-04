@@ -1,1 +1,46 @@
-Just give me your goodbye
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .song {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px auto;
+            padding: 10px;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        button {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Daftar Lagu</h2>
+    <div id="playlist">
+        <div class="song">
+            <span>Just Give Me Your Goodbye</span>
+            <button onclick="playSong('https://www.dropbox.com/scl/fi/d3ys28uqfuz60cp0azsq7/Give-Me-Your-Goodbye-Official-Lyric-Video-by-Alffy-Rev-and-The-True-Friends-ezmp3.cc.mp3?rlkey=hok8d4qrg9kxcdhyqvg2zywq4&st=5xzj66aa&dl=0')">Putar</button>
+        </div>
+    <audio id="audioPlayer" controls style="margin-top: 20px; display: block;"></audio>
+    <script>
+        function playSong(songSrc) {
+            var player = document.getElementById('audioPlayer');
+            player.src = songSrc;
+            player.play();
+        }
+    </script>
+</body>
+</html>
+
