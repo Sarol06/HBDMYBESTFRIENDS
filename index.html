@@ -534,6 +534,18 @@
             margin-top: 20px;
             display: block;
         }
+        .image-gallery {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .image-gallery img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 <body>
@@ -598,6 +610,13 @@
             </div>
         </div>
         <audio id="audioPlayer" controls onerror="alert('Gagal memuat audio. Periksa URL atau format file!')"></audio>
+        <!-- Galeri Gambar -->
+        <div class="image-gallery">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgF0dnOSZxYV8A0xDI4q6hHYcxWvm1rTsET59if2v9X3iNl6VU18QtEEvzsSUChdRBDgr2pOwfgnHjTe-kkGD6BTEpXIpMNtxbZQYWK9jcEEPLMo-XTQwOseAXgr2gAGoYHR_2f7fYU02tOztEsSvhBPGw0_iwcDyStO6G-dL39HyVbTnWDNglNc-F9dKTq/s2844/IMG-20231027-WA0042%20(1).jpg" alt="Gambar 1">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjdzk8aA8huuMHH6kvj9Cj9QX2EDoRJ9K11zFsfUC4EHMADqNXSq-eH6cXwCpqFAwtJiqKBO-_NVveECpRuNHcjBLrt5DCbGieBk7K2_W0wL4WXbVhQ5UevK2c9g0C6wBocz4Bpl4ir_jjGavZ3ZvAFXpTGfaWIiY0X8jGawCnQNs8gBfslxAIq-YnjbTgT/s4000/IMG_20240712_094600.jpg" alt="Gambar 2">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg6D2lMf0vld39qNRwk0YM8K8Z3TzLpJjHMVGs7wzjOxA22jEnMuTP-ItCzgvyyB3VQqw5YtSDX9EGkobK80A91yNfK06MV9YS_4j1HHj0OAWEvgmACd3fWhDzQVoheRsJnMpOlluTc4nF92rXcUVda1cr9xOMKAn3eJqHkown6xagBKOVtZo5NBeQXgLgC/s2844/sdadsa.jpg" alt="Gambar 3">
+        </div>
+    </div>
     <script>
         function playSong(songSrc) {
             let audioPlayer = document.getElementById('audioPlayer');
