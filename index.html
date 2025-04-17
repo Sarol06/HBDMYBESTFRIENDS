@@ -1,635 +1,819 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Song</title>
-    <style>
- @keyframes move {
-    100% {
-        transform: translate3d(0, 0, 1px) rotate(360deg);
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Septa</title>
+<style>
+#our-story-begins {
+position: relative;
+background-color: #ffffff; /* Pastikan bagian ini terisolasi */
+height: 100vh;
+overflow: hidden;
 }
-
-.background {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    background: #3E1E68;
-    overflow: hidden;
+/* Bagian White Section */
+.white {
+position: relative;
+height: 100vh;
 }
-
-.background span {
-    width: 4vmin;
-    height: 4vmin;
-    border-radius: 4vmin;
-    backface-visibility: hidden;
-    position: absolute;
-    animation: move;
-    animation-duration: 40;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
+.white:before {
+z-index: 1000;
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+height: 60vh;
+background-image: linear-gradient(
+-180deg,
+#ffffff 0%,
+rgba(255, 255, 255, 0) 100%
+);
 }
-
-
-.background span:nth-child(0) {
-    color: #E45A84;
-    top: 24%;
-    left: 35%;
-    animation-duration: 13s;
-    animation-delay: -28s;
-    transform-origin: 17vw 8vh;
-    box-shadow: -8vmin 0 1.9118268023056624vmin currentColor;
+.white:after {
+z-index: 1000;
+content: "";
+position: absolute;
+bottom: 0;
+left: 0;
+right: 0;
+height: 20vh;
+background-image: linear-gradient(
+0deg,
+#ffffff 0%,
+rgba(255, 255, 255, 0) 100%
+);
 }
-.background span:nth-child(1) {
-    color: #E45A84;
-    top: 78%;
-    left: 17%;
-    animation-duration: 9s;
-    animation-delay: -97s;
-    transform-origin: 20vw 25vh;
-    box-shadow: -8vmin 0 1.0104462053010166vmin currentColor;
+/* Kotak Animasi */
+.squares {
+height: 100%;
+display: flex;
+width: 1100px;
+justify-content: space-around;
+overflow: hidden;
+z-index: 1;
+flex-wrap: wrap; /* Untuk memenuhi area */
 }
-.background span:nth-child(2) {
-    color: #E45A84;
-    top: 35%;
-    left: 56%;
-    animation-duration: 33s;
-    animation-delay: -28s;
-    transform-origin: 13vw 10vh;
-    box-shadow: 8vmin 0 1.7791273346175596vmin currentColor;
+.square {
+animation: squares 9.5s linear infinite;
+align-self: flex-end;
+width: 1em;
+height: 1em;
+transform: translateY(100%);
+background: #ebebeb;
 }
-.background span:nth-child(3) {
-    color: #FFACAC;
-    top: 65%;
-    left: 43%;
-    animation-duration: 69s;
-    animation-delay: -32s;
-    transform-origin: 18vw 11vh;
-    box-shadow: -8vmin 0 1.4711203656160081vmin currentColor;
+.square:nth-child(2) {
+height: 1.5em;
+width: 3em;
+animation-delay: 1s;
+animation-duration: 17s;
+filter: blur(5px);
 }
-.background span:nth-child(4) {
-    color: #E45A84;
-    top: 91%;
-    left: 29%;
-    animation-duration: 57s;
-    animation-delay: -35s;
-    transform-origin: 0vw 8vh;
-    box-shadow: 8vmin 0 1.0147647637491872vmin currentColor;
+.square:nth-child(3) {
+height: 2em;
+width: 1em;
+animation-delay: 1.5s;
+animation-duration: 8s;
+filter: blur(0);
 }
-.background span:nth-child(5) {
-    color: #E45A84;
-    top: 64%;
-    left: 67%;
-    animation-duration: 20s;
-    animation-delay: -40s;
-    transform-origin: 9vw 3vh;
-    box-shadow: -8vmin 0 1.0739605664610814vmin currentColor;
+.square:nth-child(4) {
+height: 1em;
+width: 1.5em;
+animation-delay: 0.5s;
+filter: blur(3px);
+animation-duration: 13s;
 }
-.background span:nth-child(6) {
-    color: #E45A84;
-    top: 68%;
-    left: 49%;
-    animation-duration: 10s;
-    animation-delay: -46s;
-    transform-origin: 22vw -4vh;
-    box-shadow: -8vmin 0 1.281952834710625vmin currentColor;
+.square:nth-child(5) {
+height: 1.25em;
+width: 2em;
+animation-delay: 4s;
+filter: blur(2px);
+animation-duration: 11s;
 }
-.background span:nth-child(7) {
-    color: #E45A84;
-    top: 35%;
-    left: 82%;
-    animation-duration: 63s;
-    animation-delay: -54s;
-    transform-origin: 3vw -10vh;
-    box-shadow: 8vmin 0 1.489482489927084vmin currentColor;
+.square:nth-child(6) {
+height: 2.5em;
+width: 2em;
+animation-delay: 2s;
+filter: blur(1px);
+animation-duration: 9s;
 }
-.background span:nth-child(8) {
-    color: #E45A84;
-    top: 83%;
-    left: 75%;
-    animation-duration: 32s;
-    animation-delay: -47s;
-    transform-origin: -16vw -8vh;
-    box-shadow: -8vmin 0 1.348573222934056vmin currentColor;
+.square:nth-child(7) {
+height: 5em;
+width: 2em;
+filter: blur(2.5px);
+animation-duration: 12s;
 }
-.background span:nth-child(9) {
-    color: #583C87;
-    top: 50%;
-    left: 99%;
-    animation-duration: 78s;
-    animation-delay: -32s;
-    transform-origin: -10vw -23vh;
-    box-shadow: -8vmin 0 1.8616233568815004vmin currentColor;
+.square:nth-child(8) {
+height: 1em;
+width: 3em;
+animation-delay: 5s;
+filter: blur(6px);
+animation-duration: 18s;
 }
-.background span:nth-child(10) {
-    color: #E45A84;
-    top: 3%;
-    left: 57%;
-    animation-duration: 46s;
-    animation-delay: -75s;
-    transform-origin: 3vw -22vh;
-    box-shadow: 8vmin 0 1.5217313792182299vmin currentColor;
+.square:nth-child(9) {
+height: 1.5em;
+width: 2em;
+filter: blur(0.5px);
+animation-duration: 9s;
 }
-.background span:nth-child(11) {
-    color: #FFACAC;
-    top: 84%;
-    left: 83%;
-    animation-duration: 21s;
-    animation-delay: -48s;
-    transform-origin: -21vw 24vh;
-    box-shadow: 8vmin 0 1.05347095623981vmin currentColor;
+.square:nth-child(10) {
+height: 3em;
+width: 2.4em;
+animation-delay: 6s;
+filter: blur(0.5px);
+animation-duration: 12s;
 }
-.background span:nth-child(12) {
-    color: #E45A84;
-    top: 71%;
-    left: 51%;
-    animation-duration: 72s;
-    animation-delay: -72s;
-    transform-origin: 16vw 13vh;
-    box-shadow: -8vmin 0 1.4038169490823753vmin currentColor;
+@keyframes squares {
+from {
+transform: translateY(100%) rotate(-50deg);
 }
-.background span:nth-child(13) {
-    color: #E45A84;
-    top: 84%;
-    left: 41%;
-    animation-duration: 71s;
-    animation-delay: -51s;
-    transform-origin: -22vw 1vh;
-    box-shadow: 8vmin 0 1.9397884010237703vmin currentColor;
+to {
+transform: translateY(calc(-100vh + -100%)) rotate(20deg);
 }
-.background span:nth-child(14) {
-    color: #FFACAC;
-    top: 80%;
-    left: 59%;
-    animation-duration: 55s;
-    animation-delay: -12s;
-    transform-origin: 6vw 3vh;
-    box-shadow: 8vmin 0 1.8446438056601748vmin currentColor;
 }
-.background span:nth-child(15) {
-    color: #E45A84;
-    top: 65%;
-    left: 71%;
-    animation-duration: 22s;
-    animation-delay: -15s;
-    transform-origin: 19vw 8vh;
-    box-shadow: 8vmin 0 1.9363727067541407vmin currentColor;
+/* Styling untuk teks cerita */
+.story-text {
+z-index: 2;
 }
-.background span:nth-child(16) {
-    color: #FFACAC;
-    top: 66%;
-    left: 72%;
-    animation-duration: 29s;
-    animation-delay: -76s;
-    transform-origin: 12vw -10vh;
-    box-shadow: -8vmin 0 1.5599572052738986vmin currentColor;
+body {
+font-family: 'Arial', sans-serif;
+margin: 0;
+padding: 0;
+background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+color: #333;
+overflow-x: hidden;
 }
-.background span:nth-child(17) {
-    color: #FFACAC;
-    top: 46%;
-    left: 47%;
-    animation-duration: 48s;
-    animation-delay: -16s;
-    transform-origin: 22vw 11vh;
-    box-shadow: -8vmin 0 1.4248246185851148vmin currentColor;
+section {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+padding: 2rem;
+transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
-.background span:nth-child(18) {
-    color: #E45A84;
-    top: 18%;
-    left: 67%;
-    animation-duration: 29s;
-    animation-delay: -48s;
-    transform-origin: -18vw -2vh;
-    box-shadow: -8vmin 0 1.3300234377225026vmin currentColor;
+.hidden {
+opacity: 0;
+transform: translateY(50px);
 }
-.background span:nth-child(19) {
-    color: #E45A84;
-    top: 13%;
-    left: 29%;
-    animation-duration: 53s;
-    animation-delay: -68s;
-    transform-origin: 16vw -16vh;
-    box-shadow: 8vmin 0 1.8552062668725389vmin currentColor;
+header {
+background: linear-gradient(135deg, #ff6a6a, #ffd1dc);
+color: #fff;
+padding: 5rem 2rem;
+text-align: center;
 }
-.background span:nth-child(20) {
-    color: #583C87;
-    top: 100%;
-    left: 34%;
-    animation-duration: 44s;
-    animation-delay: -39s;
-    transform-origin: 3vw -13vh;
-    box-shadow: 8vmin 0 1.3471611629983427vmin currentColor;
+header h1 {
+margin: 0;
+font-size: 4rem;
+animation: fadeIn 2s ease-out;
 }
-.background span:nth-child(21) {
-    color: #583C87;
-    top: 16%;
-    left: 39%;
-    animation-duration: 21s;
-    animation-delay: -15s;
-    transform-origin: -22vw 5vh;
-    box-shadow: -8vmin 0 1.4169702483230042vmin currentColor;
+header p {
+font-size: 1.5rem;
+margin-top: 1rem;
+animation: slideIn 2s ease-out 0.5s;
 }
-.background span:nth-child(22) {
-    color: #583C87;
-    top: 6%;
-    left: 57%;
-    animation-duration: 78s;
-    animation-delay: -51s;
-    transform-origin: -21vw -21vh;
-    box-shadow: -8vmin 0 1.0698825230506959vmin currentColor;
+.gallery {
+display: flex;
+flex-wrap: wrap;
+gap: 1rem;
+justify-content: center;
+animation: fadeIn 2s ease;
 }
-.background span:nth-child(23) {
-    color: #FFACAC;
-    top: 47%;
-    left: 85%;
-    animation-duration: 26s;
-    animation-delay: -85s;
-    transform-origin: -24vw 2vh;
-    box-shadow: -8vmin 0 1.9003129524687201vmin currentColor;
+.gallery img {
+width: calc(33.333% - 1rem);
+border-radius: 10px;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.background span:nth-child(24) {
-    color: #E45A84;
-    top: 75%;
-    left: 77%;
-    animation-duration: 36s;
-    animation-delay: -100s;
-    transform-origin: -12vw 7vh;
-    box-shadow: -8vmin 0 1.2286006987592566vmin currentColor;
+.gallery img:hover {
+transform: scale(1.1);
+box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
-.background span:nth-child(25) {
-    color: #FFACAC;
-    top: 30%;
-    left: 55%;
-    animation-duration: 34s;
-    animation-delay: -54s;
-    transform-origin: -22vw -20vh;
-    box-shadow: 8vmin 0 1.197339197374114vmin currentColor;
+.circle-gallery {
+--g: 8px; /* the gap */
+--s: 400px; /* the size */
+display: grid;
+border-radius: 50%;
 }
-.background span:nth-child(26) {
-    color: #E45A84;
-    top: 26%;
-    left: 32%;
-    animation-duration: 23s;
-    animation-delay: -58s;
-    transform-origin: 2vw 2vh;
-    box-shadow: -8vmin 0 1.6143354858263304vmin currentColor;
+.circle-gallery > img {
+grid-area: 1/1;
+width: 400px;
+aspect-ratio: 1;
+object-fit: cover;
+border-radius: 50%;
+transform: translate(var(--_x,0),var(--_y,0));
+cursor: pointer;
+z-index: 0;
+transition: .3s, z-index 0s .3s;
 }
-.background span:nth-child(27) {
-    color: #FFACAC;
-    top: 95%;
-    left: 13%;
-    animation-duration: 88s;
-    animation-delay: -93s;
-    transform-origin: 8vw -8vh;
-    box-shadow: -8vmin 0 1.0670695185832917vmin currentColor;
+.circle-gallery img:hover {
+--_i: 1;
+z-index: 1;
+transition: transform .2s, clip-path .3s .2s, z-index 0s;
 }
-.background span:nth-child(28) {
-    color: #FFACAC;
-    top: 50%;
-    left: 34%;
-    animation-duration: 101s;
-    animation-delay: -79s;
-    transform-origin: -9vw 17vh;
-    box-shadow: 8vmin 0 1.1837548812929397vmin currentColor;
+.circle-gallery:hover img {
+transform: translate(0,0);
 }
-.background span:nth-child(29) {
-    color: #E45A84;
-    top: 80%;
-    left: 93%;
-    animation-duration: 49s;
-    animation-delay: -29s;
-    transform-origin: -21vw 11vh;
-    box-shadow: -8vmin 0 1.3565798991945328vmin currentColor;
+.circle-gallery > img:nth-child(1) {
+clip-path: polygon(50% 50%,calc(50%*var(--_i,0)) calc(120%*var(--_i,0)),0
+calc(100%*var(--_i,0)),0 0,100% 0,100% calc(100%*var(--_i,0)),calc(100% -
+50%*var(--_i,0)) calc(120%*var(--_i,0)));
+--_y: calc(-1*var(--g))
 }
-.background span:nth-child(30) {
-    color: #E45A84;
-    top: 7%;
-    left: 77%;
-    animation-duration: 7s;
-    animation-delay: -25s;
-    transform-origin: 9vw -17vh;
-    box-shadow: -8vmin 0 1.872558753608565vmin currentColor;
+.circle-gallery > img:nth-child(2) {
+clip-path: polygon(50% 50%,calc(100% - 120%*var(--_i,0)) calc(50%*var(--
+_i,0)),calc(100% - 100%*var(--_i,0)) 0,100% 0,100% 100%,calc(100% - 100%*var(-
+-_i,0)) 100%,calc(100% - 120%*var(--_i,0)) calc(100% - 50%*var(--_i,0)));
+--_x: var(--g)
 }
-.background span:nth-child(31) {
-    color: #E45A84;
-    top: 32%;
-    left: 53%;
-    animation-duration: 54s;
-    animation-delay: -38s;
-    transform-origin: -23vw -15vh;
-    box-shadow: -8vmin 0 1.6451062635942793vmin currentColor;
+.circle-gallery > img:nth-child(3) {
+clip-path: polygon(50% 50%,calc(100% - 50%*var(--_i,0)) calc(100% -
+120%*var(--_i,0)),100% calc(100% - 120%*var(--_i,0)),100% 100%,0 100%,0
+calc(100% - 100%*var(--_i,0)),calc(50%*var(--_i,0)) calc(100% - 120%*var(--
+_i,0)));
+--_y: var(--g)
 }
-.background span:nth-child(32) {
-    color: #FFACAC;
-    top: 20%;
-    left: 18%;
-    animation-duration: 20s;
-    animation-delay: -7s;
-    transform-origin: 7vw 20vh;
-    box-shadow: -8vmin 0 1.086322304075081vmin currentColor;
+.circle-gallery > img:nth-child(4) {
+clip-path: polygon(50% 50%,calc(120%*var(--_i,0)) calc(50%*var(--
+_i,0)),calc(100%*var(--_i,0)) 0,0 0,0 100%,calc(100%*var(--_i,0))
+100%,calc(120%*var(--_i,0)) calc(100% - 50%*var(--_i,0)));
+--_x: calc(-1*var(--g))
 }
-.background span:nth-child(33) {
-    color: #583C87;
-    top: 70%;
-    left: 42%;
-    animation-duration: 73s;
-    animation-delay: -32s;
-    transform-origin: -3vw -20vh;
-    box-shadow: -8vmin 0 1.4658974481924723vmin currentColor;
+.text-gallery-wrapper {
+display: flex;
+align-items: center; /* Agar konten vertikal rata tengah */
+justify-content: space-between; /* Beri jarak antara teks dan galeri */
+gap: 20px; /* Jarak horizontal antara teks dan galeri */
 }
-.background span:nth-child(34) {
-    color: #E45A84;
-    top: 43%;
-    left: 6%;
-    animation-duration: 99s;
-    animation-delay: -77s;
-    transform-origin: 17vw 21vh;
-    box-shadow: -8vmin 0 1.9224856872793763vmin currentColor;
+.text {
+flex: 1; /* Teks menempati ruang sesuai kebutuhan */
+padding: 10px; /* Opsional, untuk memberi ruang tambahan di sekitar teks */
+color: #000000; /* Ganti warna teks sesuai kebutuhan */
 }
-.background span:nth-child(35) {
-    color: #583C87;
-    top: 43%;
-    left: 83%;
-    animation-duration: 10s;
-    animation-delay: -87s;
-    transform-origin: 2vw 21vh;
-    box-shadow: 8vmin 0 1.3274224041313336vmin currentColor;
+.circle-gallery {
+flex: 0 0 auto; /* Ukuran galeri tetap */
+display: grid; /* Tetap gunakan pengaturan galeri */
+--g: 8px;
+--s: 400px;
 }
-.background span:nth-child(36) {
-    color: #FFACAC;
-    top: 100%;
-    left: 10%;
-    animation-duration: 84s;
-    animation-delay: -57s;
-    transform-origin: -11vw 15vh;
-    box-shadow: 8vmin 0 1.024882974676434vmin currentColor;
+/* Pengaturan Umum */
+html, body {
+height: 100%;
+margin: 0;
+padding: 0;
+font-family: Arial, sans-serif;
 }
-.background span:nth-child(37) {
-    color: #583C87;
-    top: 71%;
-    left: 88%;
-    animation-duration: 38s;
-    animation-delay: -57s;
-    transform-origin: -21vw -17vh;
-    box-shadow: -8vmin 0 1.000889916056314vmin currentColor;
+/* Thumbnail Galeri */
+.thumbs-container {
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+width: 500px;
+max-width: 100%;
 }
-.background span:nth-child(38) {
-    color: #583C87;
-    top: 97%;
-    left: 37%;
-    animation-duration: 103s;
-    animation-delay: -43s;
-    transform-origin: -5vw 21vh;
-    box-shadow: -8vmin 0 1.2164594808541627vmin currentColor;
+.thumb-item {
+max-width: 150px;
+height: 150px;
+margin: 10px;
+overflow: hidden;
+border-radius: 5px;
+box-shadow: 0 0 0 3px white, 0 5px 8px 3px rgba(0, 0, 0, 0.6);
 }
-.background span:nth-child(39) {
-    color: #FFACAC;
-    top: 92%;
-    left: 64%;
-    animation-duration: 34s;
-    animation-delay: -68s;
-    transform-origin: 17vw -5vh;
-    box-shadow: 8vmin 0 1.3449606142301767vmin currentColor;
+.thumb-item img {
+min-width: 100%;
+min-height: 100%;
+transition: transform 0.1s ease-in-out, filter 0.1s ease-in-out;
+transform: scale(1);
+filter: grayscale(50%);
 }
-.background span:nth-child(40) {
-    color: #FFACAC;
-    top: 9%;
-    left: 56%;
-    animation-duration: 90s;
-    animation-delay: -50s;
-    transform-origin: -1vw 23vh;
-    box-shadow: -8vmin 0 1.233790843273131vmin currentColor;
+.thumb-item:hover img {
+transform: scale(1.1);
+filter: grayscale(0%);
 }
-.background span:nth-child(41) {
-    color: #E45A84;
-    top: 6%;
-    left: 6%;
-    animation-duration: 77s;
-    animation-delay: -11s;
-    transform-origin: 15vw -16vh;
-    box-shadow: -8vmin 0 1.9674892507267574vmin currentColor;
+/* Lightbox */
+.lightbox {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.8);
+backdrop-filter: blur(10px); /* Menambahkan efek blur */
+opacity: 0;
+visibility: hidden;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
 }
-.background span:nth-child(42) {
-    color: #583C87;
-    top: 82%;
-    left: 8%;
-    animation-duration: 56s;
-    animation-delay: -11s;
-    transform-origin: -13vw 7vh;
-    box-shadow: 8vmin 0 1.7246493263212097vmin currentColor;
+.lightbox:target {
+opacity: 1;
+visibility: visible;
 }
-.background span:nth-child(43) {
-    color: #E45A84;
-    top: 20%;
-    left: 70%;
-    animation-duration: 16s;
-    animation-delay: -19s;
-    transform-origin: -4vw 12vh;
-    box-shadow: 8vmin 0 1.2428015389916636vmin currentColor;
+.lightbox-content img {
+display: block;
+margin: 0 auto;
+padding: 0;
+max-width: 90%;
+max-height: 80%;
+border-radius: 10px;
+box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+object-fit: contain;
 }
-.background span:nth-child(44) {
-    color: #FFACAC;
-    top: 55%;
-    left: 13%;
-    animation-duration: 31s;
-    animation-delay: -48s;
-    transform-origin: -8vw 6vh;
-    box-shadow: -8vmin 0 1.9748348244082141vmin currentColor;
+/* Menyamakan ukuran gambar pada Lightbox2 dan Lightbox3 */
+#lightbox2 img, #lightbox3 img {
+max-width: 90%; /* Maksimal 90% dari lebar viewport */
+max-height: 80vh; /* Maksimal 80% dari tinggi viewport */
+width: auto; /* Menjaga aspek rasio */
+height: auto; /* Menjaga aspek rasio */
+margin: auto;
+display: block; /* Memastikan gambar terpusat */
 }
-.background span:nth-child(45) {
-    color: #FFACAC;
-    top: 11%;
-    left: 56%;
-    animation-duration: 41s;
-    animation-delay: -86s;
-    transform-origin: 12vw -18vh;
-    box-shadow: -8vmin 0 1.9096854266494259vmin currentColor;
+/* Menentukan ukuran tetap untuk gambar di Lightbox1, Lightbox2, dan Lightbox3
+*/
+#lightbox1 img,
+#lightbox2 img,
+#lightbox3 img {
+width: 638px; /* Lebar tetap */
+height: 359px; /* Tinggi tetap */
+object-fit: cover; /* Menjaga proporsi dengan memotong gambar jika perlu
+*/
+display: block; /* Memastikan gambar tampil sebagai blok */
+margin: auto; /* Memusatkan gambar */
 }
-.background span:nth-child(46) {
-    color: #583C87;
-    top: 73%;
-    left: 86%;
-    animation-duration: 96s;
-    animation-delay: -28s;
-    transform-origin: 0vw 14vh;
-    box-shadow: 8vmin 0 1.0324419366639932vmin currentColor;
+/* Tombol Navigasi Lightbox */
+.lightbox-nav {
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+font-size: 2rem;
+color: white;
+text-decoration: none;
+padding: 10px;
 }
-.background span:nth-child(47) {
-    color: #583C87;
-    top: 91%;
-    left: 18%;
-    animation-duration: 87s;
-    animation-delay: -88s;
-    transform-origin: -14vw -6vh;
-    box-shadow: 8vmin 0 1.4051553065524096vmin currentColor;
+.lightbox-nav.left {
+left: 5%;
 }
-.background span:nth-child(48) {
-    color: #FFACAC;
-    top: 11%;
-    left: 40%;
-    animation-duration: 20s;
-    animation-delay: -68s;
-    transform-origin: -8vw 3vh;
-    box-shadow: 8vmin 0 1.3149581589032822vmin currentColor;
+.lightbox-nav.right {
+right: 5%;
 }
-.background span:nth-child(49) {
-    color: #583C87;
-    top: 73%;
-    left: 57%;
-    animation-duration: 22s;
-    animation-delay: -77s;
-    transform-origin: 16vw 23vh;
-    box-shadow: -8vmin 0 1.4771863523393753vmin currentColor;
+.lightbox-close {
+position: absolute;
+top: 20px;
+right: 20px;
+font-size: 2rem;
+color: white;
+text-decoration: none;
 }
-
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            background-color: transparent;
-            position: relative;
-        }
-        .container {
-            color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            position: relative;
-            z-index: 1;
-        }
-        .song {
-            color: #ffffff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            margin: 10px auto;
-            padding: 10px;
-            width: 60%;
-            max-width: 400px;
-        }
-        button {
-            padding: 5px 10px;
-            cursor: pointer;
-            border: none;
-            background-color: #007bff;
-            color: white;
-            border-radius: 5px;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        #audioPlayer {
-            color: #ffffff00;
-            margin-top: 20px;
-            display: block;
-        }
-.image-gallery {
-            margin-top: 30px;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            gap: 15px;
-            padding-bottom: 20px;
-        }
-        .image-gallery img {
-            width: 30%;
-            max-width: 200px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-    </style>
+/* Bagian Video */
+.video-section {
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 20px 0;
+}
+.video-player {
+max-width: 90%;
+height: auto;
+border-radius: 10px;
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+.message {
+max-width: 600px;
+background-color: rgba(255, 255, 255, 0.9);
+padding: 2rem;
+border-radius: 10px;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+margin: 2rem auto;
+animation: fadeIn 2s ease;
+}
+footer {
+background: linear-gradient(135deg, #ff6a6a, #ffd1dc);
+color: #fff;
+text-align: center;
+padding: 1rem;
+}
+.falling-manik {
+position: absolute;
+top: -10%;
+left: 50%;
+width: 10px;
+height: 10px;
+background: #fff;
+border-radius: 50%;
+animation: fall 4s linear infinite;
+opacity: 0.7;
+}
+.falling-manik.colorful {
+background: linear-gradient(135deg, #ff6a6a, #ffd1dc, #fad0c4,
+#ff9a9e, #ff6a88);
+}
+@keyframes fall {
+0% {
+transform: translateX(0) translateY(0);
+opacity: 1;
+}
+100% {
+transform: translateX(-200px) translateY(110vh);
+opacity: 0;
+}
+}
+@keyframes fadeIn {
+0% {
+opacity: 0;
+transform: translateY(20px);
+}
+100% {
+opacity: 1;
+transform: translateY(0);
+}
+}
+@keyframes slideIn {
+0% {
+opacity: 0;
+transform: translateX(-100%);
+}
+100% {
+opacity: 1;
+transform: translateX(0);
+}
+}
+.container {
+display: flex;
+width: 100%;
+padding: 4% 2%;
+box-sizing: border-box;
+height: 100vh;
+}
+.box {
+flex: 1;
+overflow: hidden;
+transition: .5s;
+margin: 0 2%;
+box-shadow: 0 20px 30px rgba(0, 0, 0, .1);
+line-height: 0;
+}
+.box > img {
+width: 200%;
+height: calc(100% - 10vh);
+object-fit: cover;
+transition: .5s;
+}
+.box > span {
+font-size: 3.8vh;
+display: block;
+text-align: center;
+height: 10vh;
+line-height: 2.6;
+}
+.box:hover {
+flex: 1 1 50%;
+}
+.box:hover > img {
+width: 100%;
+height: 100%;
+}
+/* Hover Section Styling */
+.hover-container .container {
+max-width: 720px;
+margin: 90px auto;
+position: relative;
+}
+.hover-container h2 {
+font-weight: 900;
+text-transform: uppercase;
+font-size: 110px;
+letter-spacing: -0.05em;
+text-align: center;
+line-height: 1;
+color: #ffffff; /* $blue-dark */
+font-family: 'Roboto Condensed', 'Helvetica Neue', 'Helvetica', 'Arial',
+sans-serif;
+transform-origin: center bottom;
+transition: all 0.4s;
+}
+.hover-container h2:first-of-type {
+transform-origin: center top;
+}
+.hover-container .container:hover h2 {
+transform: scaleY(0);
+}
+.hover-container .text {
+position: absolute;
+top: 50%;
+right: 0;
+left: 0;
+font-family: 'Open Sans';
+transform: translateY(-50%);
+transition: all 0.3s;
+}
+.hover-container .text:before,
+.hover-container .text:after {
+display: block;
+margin: 50px 0;
+height: 10px;
+background: linear-gradient(to right, #00fcff, #00ff72); /* $blue-lightest,
+$green-light */
+opacity: 0.75;
+content: '';
+transition: all 0.3s;
+}
+.hover-container .text:hover {
+background: white;
+}
+.hover-container .text:hover:before,
+.hover-container .text:hover:after {
+margin: 0;
+}
+.hover-container .inner {
+padding: 0 60px;
+max-height: 0;
+overflow: hidden;
+background: white;
+line-height: 1.5;
+font-size: 18px;
+font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sansserif;
+transform: scale(0);
+transition: all 0.3s;
+}
+.hover-container .container:hover .inner {
+padding: 60px;
+max-height: 700px;
+transform: scale(1);
+}
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+const sections = document.querySelectorAll("section");
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.remove("hidden");
+observer.unobserve(entry.target);
+}
+});
+}, { threshold: 0.1 });
+sections.forEach(section => {
+section.classList.add("hidden");
+observer.observe(section);
+});
+const fallingManik = () => {
+for (let i = 0; i < 30; i++) {
+const manik = document.createElement('div');
+manik.className = 'falling-manik colorful';
+manik.style.left = `${Math.random() * 100}vw`;
+manik.style.animationDelay = `${Math.random() * 2}s`;
+manik.style.animationDuration = `${3 + Math.random() *
+2}s`;
+document.body.appendChild(manik);
+setTimeout(() => manik.remove(), 5000);
+}
+};
+const thankYouSection = document.querySelector("footer");
+thankYouSection.addEventListener('mouseenter', fallingManik);
+});
+let isPlaying = false; // Track music state
+// Get references to the video and audio elements
+const videoPlayer = document.getElementById("video-player");
+const backgroundMusic = document.getElementById("background-music");
+// Pause music when video starts playing
+videoPlayer.addEventListener("play", () => {
+backgroundMusic.pause();
+});
+// Resume music when video is paused
+videoPlayer.addEventListener("pause", () => {
+backgroundMusic.play();
+});
+// Resume music when video ends
+videoPlayer.addEventListener("ended", () => {
+backgroundMusic.play();
+});
+</script>
 </head>
 <body>
-    <div class="background">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-     </div>
-    <div class="container">
-        <h2>Song</h2>
-        <div id="playlist">
-            <div class="song">
-                <span>Just Give Me Your Goodbye</span>
-                <button onclick="playSong('https://www.dropbox.com/scl/fi/d3ys28uqfuz60cp0azsq7/Give-Me-Your-Goodbye-Official-Lyric-Video-by-Alffy-Rev-and-The-True-Friends-ezmp3.cc.mp3?rlkey=hok8d4qrg9kxcdhyqvg2zywq4&raw=1')">Putar</button>
-            </div>
-        </div>
-        <audio id="audioPlayer" controls onerror="alert('Gagal memuat audio. Periksa URL atau format file!')"></audio>
-        <!-- Galeri Gambar -->
-        <div class="image-gallery">
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgF0dnOSZxYV8A0xDI4q6hHYcxWvm1rTsET59if2v9X3iNl6VU18QtEEvzsSUChdRBDgr2pOwfgnHjTe-kkGD6BTEpXIpMNtxbZQYWK9jcEEPLMo-XTQwOseAXgr2gAGoYHR_2f7fYU02tOztEsSvhBPGw0_iwcDyStO6G-dL39HyVbTnWDNglNc-F9dKTq/s2844/IMG-20231027-WA0042%20(1).jpg" alt="Gambar 1">
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjdzk8aA8huuMHH6kvj9Cj9QX2EDoRJ9K11zFsfUC4EHMADqNXSq-eH6cXwCpqFAwtJiqKBO-_NVveECpRuNHcjBLrt5DCbGieBk7K2_W0wL4WXbVhQ5UevK2c9g0C6wBocz4Bpl4ir_jjGavZ3ZvAFXpTGfaWIiY0X8jGawCnQNs8gBfslxAIq-YnjbTgT/s4000/IMG_20240712_094600.jpg" alt="Gambar 2">
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg6D2lMf0vld39qNRwk0YM8K8Z3TzLpJjHMVGs7wzjOxA22jEnMuTP-ItCzgvyyB3VQqw5YtSDX9EGkobK80A91yNfK06MV9YS_4j1HHj0OAWEvgmACd3fWhDzQVoheRsJnMpOlluTc4nF92rXcUVda1cr9xOMKAn3eJqHkown6xagBKOVtZo5NBeQXgLgC/s2844/sdadsa.jpg" alt="Gambar 3">
-        </div>
-    </div>
-    <script>
-        function playSong(songSrc) {
-            let audioPlayer = document.getElementById('audioPlayer');
-            audioPlayer.volume = 1.0;
-            audioPlayer.src = songSrc;
-            audioPlayer.play()
-                .then(() => {
-                    console.log("Lagu diputar:", songSrc);
-                })
-                .catch(err => console.error("Gagal memutar lagu:", err));
-        }
-    </script>
+<!-- Audio Player -->
+<audio id="background-music" autoplay loop>
+<source src="https://www.dropbox.com/scl/fi/g12shgep0idlkl6khmn4m/GibranAlcocer-Idea-15-
+ezmp3.cc.mp3?rlkey=rtyzojq8fqel1t2r248dvy6re&st=l28sg4jj&raw=1"
+type="audio/mp3">
+Your browser does not support the audio element.
+</audio>
+<section id="our-story-begins" style="position: relative; z-index: 1;">
+<div class="white">
+<div class="squares">
+<div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+</div>
+</div>
+<div class="grey"></div>
+<!-- Teks "Our Story Begins" -->
+<div class="story-text" style="position: absolute; top: 50%; left: 50%;
+transform: translate(-50%, -50%); text-align: center; z-index: 2;">
+<h1 style="font-size: 3rem; font-family: 'Arial', sans-serif; color:
+#333;">Our Story Begins</h1>
+<p style="font-size: 1.5rem; color: #666;">Septa, here's a glimpse of our
+journey together, filled with memories and laughter.</</p>
+</div>
+</section>
+<section class="hover-container">
+<div class="container">
+<h2>Grateful for You</h2>
+<div class="text">
+<div class="inner">
+There’s so much I want to say to you, yet words often feel too
+small to hold the depth of what I feel. Thank you for being you—for your
+patience, your kindness, and the little things you do that make life brighter.
+Thank you for staying by my side, even when I faltered, and for accepting me
+with all my flaws. You’ve shown me what it means to truly connect, to trust,
+and to feel seen.
+<p>I’m truly happy and endlessly grateful that fate—or perhaps
+something greater—brought us together. In you, I’ve found more than just a
+companion; I’ve found someone who inspires me to be better, someone who makes
+life’s mundane moments feel magical, someone who feels like a piece of my
+soul.</p>
+I’m sorry if my emotions sometimes come across as overwhelming or
+even selfish. It’s just that what I feel for you runs so deep, and I sometimes
+struggle to contain it. But please know this—I’m grateful for every moment
+we’ve shared. Every laugh, every memory, every silent understanding between
+us—they’re etched into my heart forever.
+With you, life feels fuller, brighter, and more meaningful. With
+you, I feel like I’ve found something rare and precious, something I’ll
+cherish for as long as I live.
+<p>So here’s my promise to you: no matter where life takes me, no
+matter the storms I may weather, you’ll always have a place in my heart.
+You’ll always be my home.</p>
+Forever thankful, always yours.
+</div>
+</div>
+</div>
+</section>
+<section style="background-color: #eaf8fc;">
+<div class="text-gallery-wrapper">
+<div class="text">
+<h2>All of You Matter to Me</h2>
+<p>"Thank you for giving me a reason to smile every day. Your
+presence reminds me that I’m not invisible, that I matter, and that I’m loved.
+You’ve made me feel seen and valued in ways I never thought
+possible. For that, I’ll always be grateful."</p>
+</div>
+<div class="circle-gallery">
+<img
+src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgUuZNKHGn5ucZh
+Ml4OG2mlQOq2CPwR57FHVxM6KSFRAxK8zkubkREofGLIIKgGVkP2Bvjt02FGZvXXgBRyqGrb1aPe7-
+lwV5UQCWu72_aHiOnNtfNbPYSc58PuJOTIRkYPgswbfxk7rceTwi3JVH0-
+SSrZiBiynOt3Ci3gkzzZ6kX600FVOa8Y9deFv_8r/w400-h400/11zon_cropped%20(2).png"
+alt="a hot air balloon">
+<img
+src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjf766V4CMlqxq6
+E_hDDEf7rnvo7fuODP1RO5kdysvay_hFc5vSMT1fbZPSXaCjjYZ1ww6oPjJhTHGBmI4apLX0XhVYZP
+Sf2drJxbE0b9pr83i8van1BXm63pvyAur2_6jlUfig3KGGUv85bHQjBaKClOHNVIoKW7xxVj8PeWBouf7-fsEjFfm67r0Fyhi/w400-
+h400/11zon_cropped%20(1).png" alt="a sky photo of an old city">
+<img
+src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg0DxoUuVNYkF9O
+aj6YS6vDwRjZvlrgvdOsHnRLyg6aKPlFoUox6gWy24jA32i_rBai1ubL4yydn_lvfgsfU7EiiwDdmN
+z2RVzsLMyDZnOETL1pHtxYXlwj4i40rmlwISPLwsKZkDkNfDt9kD_MxHNlaPJekrGa9f3uDJNqcqBhN043DiOIT01KJ9wqto1/w400-h400/11zon_cropped%20(3).png" alt="a
+small boat">
+<img
+src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhZoMnCsHkWopZXM_6KxyGr9OrbgbUtqn7eY9gJejBckYiXIE8F5Qf2CeKQ5igzjgVtgStDmjMqPs5msU
+y2cpr4oNNWKtAXQFBAgBSRQJ16KoyuzyfAZfWtZZC1wkZgEJnpSZ3kOYbTZ773WMZqZ3RPlriDXE56glDxpO6hkSYyQNbacaFrFw1DCD_a
+wF/w400-h400/11zon_cropped%20(4).png" alt="a forest">
+</div>
+</div>
+</section>
+<section><div class="background">
+<h2>The Best Picture I Ever Had</h2>
+<div class="thumbs-container">
+<a href="#lightbox1" class="thumb-item">
+<img
+src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpYFJ8hriZspGi
+2xC_L1AxkCmSgHHVsVRteAFOr_A862aBuzWqI1J7JSncj4JaKYE_usvHLuUfTALMQ1h_nJz9EFuyAkOSDAeWfItywiW3a2fzPICDF58TO0Ig_IBOdMRGrWTOugsAadNwmSLAGOAlchyq7bUNUqhp6LF_JmZXI9tAgodCRawV8Jupv/w400-h225/IMG_20231219_195243aa.jpg"
+alt="Gambar 1">
+</a>
+<a href="#lightbox2" class="thumb-item">
+<img
+src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWlZHfZbNbuDQF
+ckOGrwPle5comZWEvq4jLNh7bxNbUOirYZw6zOWt5TWxmRZb13rBvFc0hmPFjjKhMEce7yvXCEGZoA
+YT29TrQw7sw69fmJxbn3YPedALvBvo2KVe3Y1nV9gzvBpisZrrcPxqnahWbzpnE2_q5O_r2GiO923Qg0Z3Ntwu5w4JM8PgwGD/s4000/
+IMG_20231221_164829.jpg" alt="Gambar 2">
+</a>
+<a href="#lightbox3" class="thumb-item">
+<img
+src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhiv5llcFrinU_J
+pnzp5Nd5EP0r6UcqpsTVBlYDzylPUJHO0RX8Hnwe2o9vB3R0QDKjbkBM7prDaDxBfVIR1o8Bnj86f1tkgCo17LETSn3zhS4MKQEhEXJ0Pi3Xt508sTNdnnl_O3d1gZ70g2BNZ0j5geJxVaaqZxXHdxvDshT_FIFHnrr5_fMQ_gIWU/s4000/IMG_20231219_195243.jpg" alt="Gambar 3">
+</a>
+</div>
+</div>
+<div id="lightbox1" class="lightbox">
+<a href="#!" class="lightbox-close">&times;</a>
+<a href="#lightbox3" class="lightbox-nav left">&lt;</a>
+<div class="lightbox-content">
+<img
+src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpYFJ8hriZspGi
+2xC_L1AxkCmSgHHVsVRteAFOr_A862aBuzWqI1J7JSncj4JaKYE_usvHLuUfTALMQ1h_nJz9EFuyAkOSDAeWfItywiW3a2fzPICDF58TO0Ig_IBOdMRGrWTOugsAadNwmSLAGOAlchyq7bUNUqhp6LF_JmZXI9tAgodCRawV8Jupv/w400-h225/IMG_20231219_195243aa.jpg"
+alt="Gambar 1">
+</div>
+<a href="#lightbox2" class="lightbox-nav right">&gt;</a>
+</div>
+<div id="lightbox2" class="lightbox">
+<a href="#!" class="lightbox-close">&times;</a>
+<a href="#lightbox1" class="lightbox-nav left">&lt;</a>
+<div class="lightbox-content">
+<img
+src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWlZHfZbNbuDQF
+ckOGrwPle5comZWEvq4jLNh7bxNbUOirYZw6zOWt5TWxmRZb13rBvFc0hmPFjjKhMEce7yvXCEGZoA
+YT29TrQw7sw69fmJxbn3YPedALvBvo2KVe3Y1nV9gzvBpisZrrcPxqnahWbzpnE2_q5O_r2GiO923Qg0Z3Ntwu5w4JM8PgwGD/s4000/
+IMG_20231221_164829.jpg" alt="Gambar 2">
+</div>
+<a href="#lightbox3" class="lightbox-nav right">&gt;</a>
+</div>
+<div id="lightbox3" class="lightbox">
+<a href="#!" class="lightbox-close">&times;</a>
+<a href="#lightbox2" class="lightbox-nav left">&lt;</a>
+<div class="lightbox-content">
+<img
+src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhiv5llcFrinU_J
+pnzp5Nd5EP0r6UcqpsTVBlYDzylPUJHO0RX8Hnwe2o9vB3R0QDKjbkBM7prDaDxBfVIR1o8Bnj86f1tkgCo17LETSn3zhS4MKQEhEXJ0Pi3Xt508sTNdnnl_O3d1gZ70g2BNZ0j5geJxVaaqZxXHdxvDshT_FIFHnrr5_fMQ_gIWU/s4000/IMG_20231219_195243.jpg" alt="Gambar 3">
+</div>
+<a href="#lightbox1" class="lightbox-nav right">&gt;</a>
+</div>
+</section>
+<section style="background-color: #fef6f9;">
+<h2>Here Some "Core" of You</h2>
+<div class="video-section">
+<video controls width="640" height="360">
+<source src="https://www.dropbox.com/scl/fi/wlrkty1hsafgmbapakksv/Lv0-20240316155724.mp4?rlkey=gem8f7i7yd4p17ubnwrn79md9&st=riouj9j8&raw=1"
+type="video/mp4">
+Your browser does not support the video tag. <a
+href="https://www.dropbox.com/scl/fi/wlrkty1hsafgmbapakksv/Lv-0-
+20240316155724.mp4?raw=1">Download the video here.</a>
+</video>
+</div>
+</section>
+<section style="background-color: #faebd7;">
+<h2>Special Messages</h2>
+<div class="message">
+<p><strong>From Friend A:</strong> Septa, you brighten
+every room you walk into. Happy Birthday!</p>
+</div>
+<div class="message">
+<p><strong>From Friend B:</strong> May this year bring
+you endless joy and success!</p>
+</div>
+<div class="message">
+<p><strong>From Friend C:</strong> Keep smiling and
+shining like you always do, Septa!</p>
+</div>
+</section>
+<section style="background-color: #fff0f5;">
+<h2>Best Moment Photos</h2>
+<p>Verified by Google Photos</p>
+<div class="container">
+<div class="box">
+<img
+src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgF0dnOSZxYV8A0
+xDI4q6hHYcxWvm1rTsET59if2v9X3iNl6VU18QtEEvzsSUChdRBDgr2pOwfgnHjTekkGD6BTEpXIpMNtxbZQYWK9jcEEPLMoXTQwOseAXgr2gAGoYHR_2f7fYU02tOztEsSvhBPGw0_iwcDyStO6G-dL39HyVbTnWDNglNcF9dKTq/s2844/IMG-20231027-WA0042%20(1).jpg" alt="Memory 1">
+<span>Memory 1</span>
+</div>
+<div class="box">
+<img
+src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjdzk8aA8huuMHH
+6kvj9Cj9QX2EDoRJ9K11zFsfUC4EHMADqNXSq-eH6cXwCpqFAwtJiqKBO-
+_NVveECpRuNHcjBLrt5DCbGieBk7K2_W0wL4WXbVhQ5UevK2c9g0C6wBocz4Bpl4ir_jjGavZ3ZvAF
+XpTGfaWIiY0X8jGawCnQNs8gBfslxAIq-YnjbTgT/s4000/IMG_20240712_094600.jpg"
+alt="Memory 2">
+<span>Memory 2</span>
+</div>
+<div class="box">
+<img
+src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg6D2lMf0vld39q
+NRwk0YM8K8Z3TzLpJjHMVGs7wzjOxA22jEnMuTPItCzgvyyB3VQqw5YtSDX9EGkobK80A91yNfK06MV9YS_4j1HHj0OAWEvgmACd3fWhDzQVoheRsJnMp
+OlluTc4nF92rXcUVda1cr9xOMKAn3eJqHkown6xagBKOVtZo5NBeQXgLgC/s2844/sdadsa.jpg"
+alt="Memory 3">
+<span>Memory 3</span>
+</section>
+<section style="background-color: #f8e8f9;">
+<h2>Memorable Quotes</h2>
+<p>"Life is not measured by the number of breaths we take,
+but by the moments that take our breath away."</p>
+<p>"Happiness is not something ready-made. It comes from
+your own actions."</p>
+</section>
+<section style="background-color: #f7f3f9;">
+<h2>Thank You for Being You</h2>
+<p>Septa, your kindness and presence make the world a
+better place. Today, we celebrate you!</p>
+</section>
+<footer>
+<p>Made with love for Septa's special day</p>
+</footer>
 </body>
 </html>
